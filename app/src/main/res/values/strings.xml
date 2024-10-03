@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">My Application</string>
+    <string name="go">My Application</string>
+    <string name="logo">Calculator</string>
+    <string name="hint1">First integer</string>
+    <string name="hint2">Second integer</string>
+    <string name="button2">Calc</string>
+
+</resources>
