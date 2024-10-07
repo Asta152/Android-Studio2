@@ -5,5 +5,7 @@
     <string name="hint1">First integer</string>
     <string name="hint2">Second integer</string>
     <string name="button2">Calc</string>
-
+    <string name="Rating">9.08 out of 10</string>
+    <string name="MyOpinion">8 out of 10</string>
+    <string name="Place">3rd</string>
 </resources>
