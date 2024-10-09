@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,36 +14,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageButton VinLand_Saga, Berserk;
+    private MediaPlayer ThorfinRoar, GutsRoar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView Rating = findViewById(R.id.Rating);
-        Button btn = findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        VinLand_Saga = findViewById(R.id.imageButton);
+        Berserk = findViewById(R.id.imageButton12);
+        ThorfinRoar = MediaPlayer.create(this, R.raw.);
+        GutsRoar = MediaPlayer.create(this, R.raw.);
+
+        VinLand_Saga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showInfo("9.08 ot of 10");
+                soundPlay(ThorfinRoar);
             }
         });
-        Button btn2 = findViewById(R.id.button2);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        Berserk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showInfo();
+                soundPlay(GutsRoar);
             }
         });
-
-
     }
-    public void startNewActivity(View v){
-        Intent intent = new Intent(this, SecondActivity.class);
-        startActivity(intent);
-    }
-    private void showInfo(String text){
 
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+    private void soundPlay(MediaPlayer sound) {
+
+            sound.start();
+            if(sound.isPlaying()){
+                sound.stop();
+            }
+            sound.start();
 
     }
 
