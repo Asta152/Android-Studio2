@@ -5,51 +5,50 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton VinLand_Saga, Berserk;
-    private MediaPlayer ThorfinRoar, GutsRoar;
-
+    private Button btn_fragment1, btn_fragment2;
+    FirstFragment firstFragment = new FirstFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btn_fragment1 = findViewById(R.id.fragment1);
+        btn_fragment2 = findViewById(R.id.fragment2);
 
-        VinLand_Saga = findViewById(R.id.imageButton);
-        Berserk = findViewById(R.id.imageButton12);
-        ThorfinRoar = MediaPlayer.create(this, R.raw.);
-        GutsRoar = MediaPlayer.create(this, R.raw.);
+        setNewFragment(firstFragment);
 
-        VinLand_Saga.setOnClickListener(new View.OnClickListener() {
+        btn_fragment1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                soundPlay(ThorfinRoar);
+
+                setNewFragment(firstFragment);
             }
         });
-        Berserk.setOnClickListener(new View.OnClickListener() {
+        btn_fragment2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                soundPlay(GutsRoar);
+                SecondFragment secondFragment = new SecondFragment();
+                setNewFragment(secondFragment);
             }
         });
     }
 
+    private void setNewFragment(Fragment fragment) {
 
-    private void soundPlay(MediaPlayer sound) {
-
-            sound.start();
-            if(sound.isPlaying()){
-                sound.stop();
-            }
-            sound.start();
-
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
-
 }

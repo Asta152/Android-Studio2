@@ -8,4 +8,6 @@
     <string name="Rating">9.08 out of 10</string>
     <string name="MyOpinion">8 out of 10</string>
     <string name="Place">3rd</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
