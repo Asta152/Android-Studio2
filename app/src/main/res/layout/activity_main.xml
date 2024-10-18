@@ -1,81 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/torfin"
+    android:background="@color/yellow"
     tools:context=".MainActivity"
     >
 
-    <FrameLayout
-        android:id="@+id/frame"
+
+    <RelativeLayout
+        android:id="@+id/FirstLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout">
+        android:layout_height="120dp"
+        android:background="@color/blue">
+        <TextView
+            android:id="@+id/Hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/Hello"
+            android:textSize="40sp"
+            android:fontFamily="@font/montserrat_alternates_semibold"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp">
 
-    </FrameLayout>
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/tasks"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat_alternates_semibold"
+            android:layout_marginHorizontal="50dp"
+            android:layout_below="@+id/Hello">
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:background="#A67E08"
-        android:backgroundTint="#FFC107"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </TextView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:contentDescription="@string/hint2"
-        android:layout_marginBottom="80dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
 
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/FirstLayout"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/blue"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:text="@string/Login"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/yellow">
+
+        </Button>
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/cloudvector"
+        />
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue">
+
 
         <Button
-            android:id="@+id/fragment1"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"
-            android:text="Fragment1" />
-
+            android:text="Tasks"
+            android:backgroundTint="@color/yellow"
+            android:layout_marginTop="10dp"
+            />
         <Button
-            android:id="@+id/fragment2"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"
-
-            android:text="fragment2" />
+            android:text="Clowns"
+            android:backgroundTint="@color/yellow"
+            android:layout_marginTop="10dp"
+            />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Sigmas"
+            android:backgroundTint="@color/yellow"
+            android:layout_marginTop="10dp"
+            />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/Vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="200dp">
+
+
+        <EditText
+            android:id="@+id/edit1"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Write Task"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/edit2"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Write Task" />
+
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/Vertical"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="SaveData"
+        android:text="Save"
+        android:textColor="@color/black" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/Vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="@color/blue"
+        android:onClick="GetData"
+        android:text="Get"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

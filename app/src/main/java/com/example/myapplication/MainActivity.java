@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,41 +15,60 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 public class MainActivity extends AppCompatActivity {
+    private EditText userNameField, userBioField;
 
-    private Button btn_fragment1, btn_fragment2;
-    FirstFragment firstFragment = new FirstFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn_fragment1 = findViewById(R.id.fragment1);
-        btn_fragment2 = findViewById(R.id.fragment2);
-
-        setNewFragment(firstFragment);
-
-        btn_fragment1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                setNewFragment(firstFragment);
-            }
-        });
-        btn_fragment2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SecondFragment secondFragment = new SecondFragment();
-                setNewFragment(secondFragment);
-            }
-        });
+        userNameField = findViewById(R.id.edit1);
+        userBioField = findViewById(R.id.edit2);
     }
+    public void SaveData(View view){
+        String userName = userNameField.getText().toString();
+        String userBio = userBioField.getText().toString();
 
-    private void setNewFragment(Fragment fragment) {
+        try {
+            FileOutputStream fileOutput = openFileOutput("user_data.txt", MODE_PRIVATE);
+            fileOutput.write((userName + ". " + userBio).getBytes());
+            fileOutput.close();
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
+            userNameField.setText("");
+            userBioField.setText("");
+            Toast.makeText(this, "Saved text", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "GEt THe Freak Up", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "GEt THe Freak Up", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+    public void GetData(View view){
+        try {
+            FileInputStream fileInput = openFileInput("user_data.txt");
+            InputStreamReader reader = new InputStreamReader(fileInput);
+            BufferedReader br = new BufferedReader(reader);
+
+            StringBuilder stringBuffer = new StringBuilder();
+            String lines = "", result = "";
+            while ((lines = br.readLine()) != null){
+                stringBuffer.append(lines + "\n");
+            }
+            Toast.makeText(this, stringBuffer, Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
