@@ -71,4 +71,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    public void goToClowns(View view){
+        Intent intent = new Intent(this, ContactsActivity.class);
+        startActivity(intent);
+    }
+
 }

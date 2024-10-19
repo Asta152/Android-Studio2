@@ -89,14 +89,15 @@
             android:backgroundTint="@color/yellow"
             android:layout_marginTop="10dp"
             />
+
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:text="Clowns"
-            android:backgroundTint="@color/yellow"
             android:layout_marginTop="10dp"
-            />
+            android:backgroundTint="@color/yellow"
+            android:onClick="goToClowns"
+            android:text="Clowns" />
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
