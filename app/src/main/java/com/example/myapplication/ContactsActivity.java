@@ -19,8 +19,8 @@ public class ContactsActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.ListView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.name_item, R.id.design, namesArr);
-        listView.setAdapter(adapter);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.name_item, R.id.design, namesArr);
+//        listView.setAdapter(adapter);
     }
     public void goHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);

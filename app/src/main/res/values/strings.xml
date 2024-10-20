@@ -1,16 +1,13 @@
 <resources>
-    <string name="app_name" translatable="false">My Application</string>
-    <string name="go">My Application</string>
-    <string name="logo">Calculator</string>
-    <string name="hint1">First integer</string>
-    <string name="hint2">Second integer</string>
-    <string name="button2">Calc</string>
-    <string name="Rating">9.08 out of 10</string>
-    <string name="MyOpinion">8 out of 10</string>
-    <string name="Place">3rd</string>
     <string name="tasks">This is your tasks list</string>
     <string name="Hello">Hello Admin</string>
     <string name="Login">Log in</string>
+    <string name="Namae">Name</string>
+    <string name="Surname">Surname</string>
+    <string name="Group">Group</string>
+    <string name="Cancel">Cancel</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

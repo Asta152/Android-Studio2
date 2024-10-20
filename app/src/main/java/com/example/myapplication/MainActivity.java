@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,15 +27,32 @@ import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
     private EditText userNameField, userBioField;
-
-
+    private Button LogIn;
+    BlankFragment blankFragment = new BlankFragment();
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         userNameField = findViewById(R.id.edit1);
         userBioField = findViewById(R.id.edit2);
+
+        LogIn = findViewById(R.id.Log);
+        LogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetNewFragment(blankFragment);
+            }
+        });
     }
+
+    private void SetNewFragment(Fragment fragment) {
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame, blankFragment);
+        ft.commit();
+    }
+
     public void SaveData(View view){
         String userName = userNameField.getText().toString();
         String userBio = userBioField.getText().toString();
@@ -75,5 +94,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ContactsActivity.class);
         startActivity(intent);
     }
+
 
 }
