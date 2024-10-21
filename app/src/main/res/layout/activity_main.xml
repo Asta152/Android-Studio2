@@ -50,17 +50,19 @@
         android:layout_marginTop="20dp"
         android:background="@color/blue"
         >
+
         <Button
             android:id="@+id/Log"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
-            android:text="@string/Login"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/yellow">
+            android:backgroundTint="@color/yellow"
+            android:onClick="onClick"
+            android:text="@string/Login"
+            android:textColor="@color/black"
+            android:textSize="20sp">
 
         </Button>
 

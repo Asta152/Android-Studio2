@@ -28,7 +28,6 @@ import java.io.InputStreamReader;
 public class MainActivity extends AppCompatActivity {
     private EditText userNameField, userBioField;
     private Button LogIn;
-    BlankFragment blankFragment = new BlankFragment();
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +36,11 @@ public class MainActivity extends AppCompatActivity {
         userNameField = findViewById(R.id.edit1);
         userBioField = findViewById(R.id.edit2);
 
-        LogIn = findViewById(R.id.Log);
-        LogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SetNewFragment(blankFragment);
-            }
-        });
-    }
+                }
 
     private void SetNewFragment(Fragment fragment) {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame, blankFragment);
         ft.commit();
     }
 
@@ -92,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goToClowns(View view){
         Intent intent = new Intent(this, ContactsActivity.class);
+        startActivity(intent);
+    }
+    public void onClick(View view){
+        LoginActivity loginActivity = new LoginActivity();
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -47,5 +48,13 @@ public class MyDatabase extends SQLiteOpenHelper{
         cv.put(COLUMN_NAME, name);
         cv.put(COLUMN_SURNAME,surname);
         cv.put(COLUMN_GROUP,group);
+
+        Long result = db.insert(TABLE_NAME, null, cv);
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show();
+        }
     }
 }
