@@ -4,36 +4,31 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.google.android.material.internal.NavigationMenu;
+public class MyDatabase extends SQLiteOpenHelper {
+        private static final String DATABASE_NAME = "myDatabase";
+        private static final int DATABASE_VERSION = 1;
+        private static final String TABLE_NAME ="LoginDb";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "name";
+        private static final String COLUMN_SURNAME = "Surname";
+        private static final String COLUMN_GROUP = "grop";
 
-public class MyDatabase extends SQLiteOpenHelper{
 
-    private Context context;
-    private static final String DATABASE_NAME = "BookLibrary.db";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "User";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_GROUP = "_group";
-    private static final String COLUMN_SURNAME = "surname";
-
-    public MyDatabase(@Nullable Context context) {
+    public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME +
-                        " (" +
-                        COLUMN_SURNAME + "TEXT, " +
-                        COLUMN_NAME + "TEXT, " +
-                        COLUMN_GROUP + "TEXT) ;";
-        db.execSQL(query);
-
+        String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_NAME + " TEXT, "
+                + COLUMN_SURNAME + " TEXT, "
+                + COLUMN_GROUP + " TEXT)";
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
@@ -41,20 +36,15 @@ public class MyDatabase extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    void LogIN(String name, String surname, String group){
+    public void InsertUser(String nam, String surnam, String grop){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
+        ContentValues values = new ContentValues();
 
-        cv.put(COLUMN_NAME, name);
-        cv.put(COLUMN_SURNAME,surname);
-        cv.put(COLUMN_GROUP,group);
+        values.put(COLUMN_NAME, nam);
+        values.put(COLUMN_SURNAME, surnam);
+        values.put(COLUMN_GROUP, grop);
 
-        Long result = db.insert(TABLE_NAME, null, cv);
-        if(result == -1){
-            Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show();
-        }
+        db.insert(TABLE_NAME, null, values);
+        db.close();
     }
 }

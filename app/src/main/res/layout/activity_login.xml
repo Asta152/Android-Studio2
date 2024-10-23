@@ -19,6 +19,7 @@
         android:layout_marginTop="180dp"
         />
     <EditText
+        android:id="@+id/Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Namae"
@@ -30,6 +31,7 @@
         />
 
     <EditText
+        android:id="@+id/Surname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Surname"
@@ -40,6 +42,7 @@
 
         />
     <EditText
+        android:id="@+id/Group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Group"
@@ -50,6 +53,7 @@
         />
 
     <Button
+        android:id="@+id/Log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
