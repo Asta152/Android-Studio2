@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,8 +35,16 @@ public class LoginActivity extends AppCompatActivity {
                 String getName = name.getText().toString().trim();
                 String getSurname = surname.getText().toString().trim();
                 String getGroup = group.getText().toString().trim();
+                long result = myDatabase.InsertUser(getName, getSurname, getGroup);
 
                 myDatabase.InsertUser(getName, getSurname, getGroup);
+                if(result == -1){
+                    Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

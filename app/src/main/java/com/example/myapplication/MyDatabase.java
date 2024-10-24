@@ -36,7 +36,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    public void InsertUser(String nam, String surnam, String grop){
+    public long InsertUser(String nam, String surnam, String grop){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -44,7 +44,8 @@ public class MyDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_SURNAME, surnam);
         values.put(COLUMN_GROUP, grop);
 
-        db.insert(TABLE_NAME, null, values);
+        long result = db.insert(TABLE_NAME, null, values);
         db.close();
+        return result;
     }
 }
